@@ -8,8 +8,7 @@
 /*   Created: 2022/03/10 14:46:13 by ados-rei          #+#    #+#             */
 /*   Updated: 2022/03/10 17:37:57 by ados-rei         ###   ########.fr       */
 /*                                                                            */
-/*   -> Function to print arguments of type string. Return the size of the    */
-/*      string.                                                               */
+/*   -> Function to print string type arguments. Return the size of the string*/
 /* ************************************************************************** */
 #include "ft_printf.h"
 
