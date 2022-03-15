@@ -14,49 +14,50 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	g_len;
-
-va_list	ft_format(const char format, va_list args)
+int	ft_format(const char format, va_list args)
 {
+	int	str_len;
+
 	if (format == 'c')
-		g_len += ft_print_char(va_arg(args, int));
+		str_len += ft_print_char(va_arg(args, int));
 	else if (format == 's')
-		g_len += ft_print_str(va_arg(args, char *));
+		str_len += ft_print_str(va_arg(args, char *));
 	else if (format == 'p')
-		g_len += ft_print_ptr(va_arg(args, unsigned long));
+		str_len += ft_print_ptr(va_arg(args, unsigned long));
 	else if (format == 'd' || format == 'i')
-		g_len += ft_print_nbr(va_arg(args, int));
+		str_len += ft_print_nbr(va_arg(args, int));
 	else if (format == 'u')
-		g_len += ft_print_uns(va_arg(args, unsigned int));
+		str_len += ft_print_uns(va_arg(args, unsigned int));
 	else if (format == 'x' || format == 'X')
-		g_len += ft_print_hex(va_arg(args, unsigned int), format);
+		str_len += ft_print_hex(va_arg(args, unsigned int), format);
 	else if (format == '%')
-		g_len += ft_print_char('%');
-	return (args);
+		str_len += ft_print_char('%');
+	return (str_len);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	int		cont;
+	int		str_len;
 	va_list	args;
 
-	g_len = 0;
+	str_len = 0;
 	cont = 0;
 	va_start(args, format);
 	while (format[cont] != '\0')
 	{
 		if (format[cont] == '%')
 		{
-			args = ft_format(format[cont + 1], args);
+			str_len += ft_format(format[cont + 1], args);
 			cont++;
 		}
 		else
 		{
 			ft_print_char(format[cont]);
-			g_len += 1;
+			str_len += 1;
 		}
 		cont++;
 	}
 	va_end(args);
-	return (g_len);
+	return (str_len);
 }

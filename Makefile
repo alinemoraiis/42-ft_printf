@@ -11,7 +11,6 @@
 # ************************************************************************** #
 
 NAME = libftprintf.a
-LIBFT = ./ft_printf/libft/libft.a
 
 SRCS = ft_printf.c \
 		ft_print_char.c \
@@ -19,32 +18,27 @@ SRCS = ft_printf.c \
 		ft_print_nbr.c \
 		ft_print_ptr.c \
 		ft_print_str.c \
-		ft_print_uns.c
+		ft_print_uns.c \
+		ft_putnbr_fd.c
 
 CC = cc
 FLAGS = -c -Wall -Werror -Wextra
 RM = rm -f
-INCLUDES = -I./includes
 
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
-	$(MAKE) bonus -C ./libft
-	cp libft/libft.a $(NAME)
 	$(CC) $(FLAGS) $(INCLUDES) $(SRCS)
 	ar rc $(NAME) $(OBJS)
 
 all: $(NAME)
 
 clean :
-	$(MAKE) clean -C ./libft
 	rm -rf $(OBJS)
 
 fclean : clean
-	$(MAKE) fclean -C ./libft
 	rm -rf $(NAME)
 
 re: fclean all
 
 .PHONY:	all clean fclean re
-
