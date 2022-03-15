@@ -13,6 +13,7 @@
 - **ft_print_nbr**: function to print integer type arguments. Return the lenght of the integer.
 - **ft_print_uns**: function to print unsigned integer type arguments. Return the lenght of the integer.
 - **ft_print_hex**: function to print hexadecimal type arguments. Return the lenght of the hexadecimal.
+- **ft_putnbr_fd**: function copied from Libft. Used to print numbers.
 
 ## :alien: Used tests
 - [printfTester](https://github.com/Tripouille/printfTester)
